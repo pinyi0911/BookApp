@@ -49,7 +49,7 @@ const Albumlist = ({ list, navigation }) => {
         <FlatList
           horizontal={true}
           data={section.data}
-          renderItem={({ item }) => <HotAlbumDetail navigation album={item} />}
+          renderItem={({ item }) => <HotAlbumDetail navigation={navigation} album={item} />}
           showsHorizontalScrollIndicator={false}
           keyExtractor={ item => item.title }
         />
@@ -60,7 +60,7 @@ const Albumlist = ({ list, navigation }) => {
     if (section.horizontal) {
       return null;
     }
-    return <AlbumDetail album={item} />
+    return <AlbumDetail album={item}/>
   };
 
   return (
@@ -78,9 +78,10 @@ const Albumlist = ({ list, navigation }) => {
 
 const styles = StyleSheet.create({
   sectionHeader: {
-    fontWeight: '600',
-    fontSize: 18,
-    paddingTop: 20,
+    
+    fontWeight: 'bold',
+    fontSize: 24,
+    paddingTop: 8,
     paddingBottom: 5,
     paddingLeft: 10,
     

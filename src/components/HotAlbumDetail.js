@@ -45,22 +45,22 @@ const styles = StyleSheet.create({
     width: 130,
   },
   headerTitleStyle: {
-    fontSize: 12,
-    fontWeight: 'bold',
+    fontSize: 16,
+    fontWeight: '500',
+    marginTop:12
   },
   headerContentStyle: {
     fontSize: 11,
     fontWeight: '300',
-    color: "#222",
-    width: '100%'
+    color: "#131313",
+    width: '100%',
+    marginTop:8
   },
-  cardSectionStyle: {
 
- 
-  },
   imageStyle: {
     height: 200,
     width: 140,
+    marginHorizontal:8
   }
 });
 

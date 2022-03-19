@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, ScrollView, Text, View, Image, Button, Linking } from 'react-native';
+import { StyleSheet, ScrollView, Text, View, Image, Button, Linking,TouchableOpacity } from 'react-native';
 
 const DetailScreen = ({ route }) => {
   const { title, 
@@ -7,10 +7,10 @@ const DetailScreen = ({ route }) => {
     price,
     url,
     image,
-    description
+    descriptions
   } = route.params;
   return (
-    <ScrollView>
+    <ScrollView style={{backgroundColor: '#fff'}}>
       <View>
         <Image
           style={styles.imageStyle}
@@ -20,24 +20,30 @@ const DetailScreen = ({ route }) => {
         />
       </View>
       <View style={styles.cardContainerStyle}>
-        <Text style={styles.discountStyle} >Discount Now!</Text>
-        <Text style={styles.priceStyle} >Price: ${price}</Text>
-        <Button 
+
+        <Text style={styles.titleStyle} >{title}</Text>
+        <Text style={styles.artistStyle} >{artist}</Text>
+
+        <Text 
+        style={{
+          lineHeight: 24,
+          marginBottom:28,
+          textAlign:'center'
+        }}
+        >{'\t'}{descriptions}</Text>
+
+        {/* <Button 
           onPress={() => Linking.openURL(url)}
-          title="Buy Now !"
-        />  
+          title="Buy Now for $46.99"
+          color='#6200EE'
+        /> */}
+        <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>Buy Now for $46.99</Text>
+        </TouchableOpacity>
+          
       </View>
       <View style={styles.cardContainerStyle}>
-          <Text>
-            <Text style={{fontWeight:'bold'}}>Artist: </Text>
-            {artist}
-          </Text>
-          <Text>            
-            <Text style={{fontWeight:'bold'}}>Title: </Text>
-            {title}
-          </Text>
-          <Text style={{marginTop: 15, fontWeight: 'bold'}}>Descriptions:</Text>
-          <Text style={{lineHeight: 18}}>{'\t'}{description}</Text>
+        
       </View>
     </ScrollView>
   );
@@ -51,8 +57,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },  
   imageStyle: {
-    height: 200,
-    width: null
+    height: 300,
+    width: 210,
+    marginHorizontal: 90,
+    marginTop:16
   },
   cardContainerStyle: {
     backgroundColor: '#fff',
@@ -60,17 +68,36 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginTop: 10
   },
-  discountStyle: {
-    color: '#6099E4',
+  titleStyle: {
+    color: '#000',
     textAlign: 'center',
-    fontSize: 25,
-    fontWeight: 'bold'
+    fontSize: 24,
+    fontWeight: '500',
+
   },
-  priceStyle: {
-    fontWeight: 'bold',
+  artistStyle: {
+    fontWeight: '400',
     textAlign: 'center',
-    fontSize: 40,
+    fontSize: 14,
     marginVertical: 20,
+    color: '#666666',
+    marginTop:8
+  },
+  button: {
+    marginHorizontal: 85,
+    backgroundColor: '#6200EE',
+    borderRadius: 4,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom:50,
+  },
+  buttonText: {
+    fontWeight: '500',
+    textAlign: 'center',
+    fontSize: 14,
+    color: '#fff',
+    paddingVertical: 10,
+    paddingHorizontal: 16,
   }
 });
 
