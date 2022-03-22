@@ -1,16 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, View, Image,Pressable} from "react-native";
-
+import StarMaker from "./StarMaker";
 const HotAlbumDetail = props => {
    let { album,navigation } = props;
    return (
      <View style={{flexDirection: 'column'}}>
       <View style={styles.cardContainerStyle}>
         <View style={styles.cardSectionStyle}>
-          {/* <Image
-            style={styles.imageStyle}
-            source={{uri: album.image}}
-          /> */}
+ 
           <Pressable 
             onPress={() => {navigation.navigate('Detail', album)} }//第一個引數放入要跳轉頁面的name，第二個引數則是放入要傳遞的資料
           >
@@ -19,14 +16,20 @@ const HotAlbumDetail = props => {
             source={{uri: album.image}}
           />
           </Pressable>
-
+           <StarMaker 
+           star={album.star} 
+           light_star={album.light_star}
+           dark_star={album.dark_star}  
+           />
         </View>
-      </View>  
+      </View> 
+ 
       <View style={styles.headerContainerStyle}>
+
         <Text style={styles.headerTitleStyle}>{album.title}</Text>
         <Text style={styles.headerContentStyle}>{album.artist}</Text>
       </View>
-     
+      
     </View>
 
   )};
@@ -47,7 +50,7 @@ const styles = StyleSheet.create({
   headerTitleStyle: {
     fontSize: 16,
     fontWeight: '500',
-    marginTop:12
+    // marginTop:16
   },
   headerContentStyle: {
     fontSize: 11,
@@ -60,8 +63,11 @@ const styles = StyleSheet.create({
   imageStyle: {
     height: 200,
     width: 140,
-    marginHorizontal:8
-  }
+    marginHorizontal:8,
+    marginBottom:16,
+  },
+
+  
 });
 
 export default HotAlbumDetail;

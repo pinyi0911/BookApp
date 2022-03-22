@@ -1,43 +1,5 @@
-// import React from "react";
-// import { FlatList,SectionList } from "react-native";
-// import AlbumDetail from "./HotAlbumDetail";
-// import sections from "../json/album_section.json";
-
-// const AlbumList = ({ list, navigation }) => {
-//   const renderItem = ({ item }) => <AlbumDetail album={item} navigation={navigation} />;
-//   return (
-//     <SectionList
-//       horizontal={true}
-//       sections={sections}
-//       renderItem={renderItem}
-//       keyExtractor={ item => item.title }
-//       // renderSectionHeader={renderSectionHeader}
-      
-//     />
-//     // <FlatList
-//     //       data={list}
-//     //       renderItem={renderItem}
-//     //       keyExtractor={item => item.title}
-//     //     />    
-     
-    
-//     // <SectionList 
-//     //   sections={sections}
-//     //   contentContainerStyle={{ paddingHorizontal: 10 }}
-//     //   stickySectionHeadersEnabled={false}
-//     //   showsHorizontalScrollIndicator={false}
-//     //   renderSectionHeader={renderSectionHeader}
-//     //   renderItem={renderItem}
-//     //   keyExtractor={ item => item.title }
-//     // />
-//   );  
-// }
-
-// export default AlbumList;
-
 import React from "react";
 import { Text, FlatList, SectionList, StyleSheet } from "react-native";
-import AlbumDetail from "./AlbumDetail";
 import HotAlbumDetail from "./HotAlbumDetail";
 import sections from "../json/album_section.json";
 
@@ -46,7 +8,7 @@ const Albumlist = ({ list, navigation }) => {
     <>
       <Text style={styles.sectionHeader}>{section.title}</Text>
       {section.horizontal ? (
-        <FlatList
+        <FlatList 
           horizontal={true}
           data={section.data}
           renderItem={({ item }) => <HotAlbumDetail navigation={navigation} album={item} />}
@@ -60,7 +22,7 @@ const Albumlist = ({ list, navigation }) => {
     if (section.horizontal) {
       return null;
     }
-    return <AlbumDetail album={item}/>
+    return <AlbumDetail album={item} navigation={navigation}/>
   };
 
   return (

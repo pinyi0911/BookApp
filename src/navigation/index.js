@@ -1,62 +1,5 @@
-// import React from 'react';
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-// import AlbumScreen from '../screens/AlbumScreen';
-// import DetailScreen from '../screens/DetailScreen';
-
-// import albumData from "../json/album_section.json";
-
-// const Stack = createNativeStackNavigator();
-
-// const Navigation = () => {
-//   return (
-//     <NavigationContainer>
-//       <StackNavigator />
-//     </NavigationContainer>
-//   );
-// }
-
-// const StackNavigator = () => {
-//   return (
-//     <Stack.Navigator>
-//       <Stack.Screen
-//         name="Home"
-//         component={AlbumScreen}
-//         options={{
-//           title: albumData.albumTitle,
-//           headerTitleStyle: {
-//             fontWeight: '400',
-//             fontSize: 20
-//           },
-//         }}
-//       />
-//       <Stack.Screen
-//         name="Detail"
-//         component={DetailScreen}
-//         options={({ route }) => ({
-//           title: route.params.title,
-//           headerStyle: {
-//             backgroundColor: '#fff',
-//           },
-//           headerTintColor: '#000',
-//           headerTitleStyle: {
-//             fontWeight: '400',
-//             fontSize: 20
-//           },
-//         })}
-//       />
-//     </Stack.Navigator>
-//   );
-// }
-
-// export default Navigation;
-
-
-
-
-import React from 'react';
-import { Image,Pressable } from "react-native";
+import React,{useState} from 'react';
+import { Image,Pressable,TouchableOpacity } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -142,6 +85,13 @@ const MyTabs = () => {
 }
 
 const HomeStack = () => {
+
+
+  const [change, setChange] = useState(true);
+    const changeIcon = () => {
+        setChange(!change);
+    };
+
   return (
     <Stack.Navigator
       // screenOptions={{
@@ -163,6 +113,7 @@ const HomeStack = () => {
           headerShadowVisible: false,//去除陰影
           headerRight: () => (
             // <AntDesign name="SearchOutlined" color={color} size={24} />
+            <TouchableOpacity >
             <Image source={{uri:'https://github.com/pinyi0911/BookApp/blob/master/img/icon.png?raw=true'}} 
             style={{
               marginTop:30,
@@ -171,10 +122,15 @@ const HomeStack = () => {
               width:17.5,
           }}
             />
+            </TouchableOpacity>
+            
  
           ), // 右邊放入 icon
         }}
       />
+
+
+      
       <Stack.Screen
         name="Detail"
         component={DetailScreen}
@@ -196,13 +152,17 @@ const HomeStack = () => {
           <AntDesign name="left" color={color} size={24} />
           </Pressable>  
             
-            // 左邊放入icon 並使用 navigation.goBack() 及 backToHome() 回上一頁
+            // 左邊放入icon /navigation.goBack() 及 backToHome() 回上一頁
           ),
-
+          
+          
           headerRight: () => (
-            // <AntDesign name="SearchOutlined" color={color} size={24} />
-            <MaterialCommunityIcons name="bookmark" color='#6200EE' size={24}/>
- 
+            <TouchableOpacity onPress={() => changeIcon()}>
+              
+            {change ? <MaterialCommunityIcons name={'bookmark-outline'} color={'black'} size={25} />
+                     :<MaterialCommunityIcons name={'bookmark'} color={'#6200EE'} size={25} />
+            }
+            </TouchableOpacity>
           ), // 右邊放入 icon
 
           headerShadowVisible: false,//去除陰影
