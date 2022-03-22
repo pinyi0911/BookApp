@@ -159,8 +159,8 @@ const HomeStack = () => {
           headerRight: () => (
             <TouchableOpacity onPress={() => changeIcon()}>
               
-            {change ? <MaterialCommunityIcons name={'bookmark-outline'} color={'black'} size={25} />
-                     :<MaterialCommunityIcons name={'bookmark'} color={'#6200EE'} size={25} />
+            {change ? <MaterialCommunityIcons name={'bookmark-outline'} color={'black'} size={24} />
+                     :<MaterialCommunityIcons name={'bookmark'} color={'#6200EE'} size={24} />
             }
             </TouchableOpacity>
           ), // 右邊放入 icon
